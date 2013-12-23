@@ -10,7 +10,8 @@ CPP_SRCS += \
 ../src/Tuner.cpp \
 ../src/am_fm_pm_baseband_demod.cpp \
 ../src/exp_agc.cpp \
-../src/framebuffer.cpp 
+../src/framebuffer.cpp \
+../src/resampler.cpp 
 
 OBJS += \
 ./src/Decimate.o \
@@ -19,7 +20,8 @@ OBJS += \
 ./src/Tuner.o \
 ./src/am_fm_pm_baseband_demod.o \
 ./src/exp_agc.o \
-./src/framebuffer.o 
+./src/framebuffer.o \
+./src/resampler.o 
 
 CPP_DEPS += \
 ./src/Decimate.d \
@@ -28,7 +30,8 @@ CPP_DEPS += \
 ./src/Tuner.d \
 ./src/am_fm_pm_baseband_demod.d \
 ./src/exp_agc.d \
-./src/framebuffer.d 
+./src/framebuffer.d \
+./src/resampler.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
