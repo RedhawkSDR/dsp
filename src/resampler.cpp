@@ -86,7 +86,13 @@ float ArbitraryRateResamplerClass::newData(std::vector<float>& real_in)
 		//do 2*a real samples as complex samples
 		for (size_t j=0; j!=numSamples; j++)
 		{
-			val.real(*i);
+			//note I would like to use
+			// val.real(*i);
+			// but it is not available in C++98
+			// as such you can use the copy operator and it will
+			// more or less do the same thing since the imaginary part
+			// is identically 0
+			val = *i;
 			next(val, cmplxOut, cmplxOldData);
 			if (cmplxFlushed)
 				realOldData.push_front(*i);
