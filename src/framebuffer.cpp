@@ -179,11 +179,24 @@ void framebuffer<iterT>::setFrameSize(size_t frameSize)
 	frameSize_=frameSize;
 	updateInternals();
 }
+
+template <typename iterT>
+size_t framebuffer<iterT>::getFrameSize()
+{
+	return frameSize_;
+}
+
 template <typename iterT>
 void framebuffer<iterT>::setOverlap(long overlap)
 {
 	overlap_ = overlap;
 	updateInternals();
+}
+
+template <typename iterT>
+long framebuffer<iterT>::getOverlap()
+{
+	return overlap_;
 }
 
 template <typename iterT>

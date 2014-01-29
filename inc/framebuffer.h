@@ -54,7 +54,9 @@ public:
 
 	//modify the frame parameters
 	void setFrameSize(size_t frameSize);
+	size_t getFrameSize();
 	void setOverlap(long overlap);
+	long getOverlap();
 
 private:
 	void updateInternals();
