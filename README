@@ -28,3 +28,10 @@ INSTALLING THIS LIBRBARY:
 Once built, install this component into $SDRROOT for use by other components. This is done by 
 copying this folder into $SDROOT/dom/components/ or through the REDHAWK IDE by dragging the project 
 folder over to the 'Target SDR' in the 'SCA Explorer' view.
+
+OR
+from the command line type:
+make install 
+
+
+
