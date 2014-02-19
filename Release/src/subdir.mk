@@ -6,7 +6,6 @@
 CPP_SRCS += \
 ../src/Decimate.cpp \
 ../src/FIRFilter.cpp \
-../src/FirFilterDesigner.cpp \
 ../src/RealFIRFilter.cpp \
 ../src/Tuner.cpp \
 ../src/am_fm_pm_baseband_demod.cpp \
@@ -17,7 +16,6 @@ CPP_SRCS += \
 OBJS += \
 ./src/Decimate.o \
 ./src/FIRFilter.o \
-./src/FirFilterDesigner.o \
 ./src/RealFIRFilter.o \
 ./src/Tuner.o \
 ./src/am_fm_pm_baseband_demod.o \
@@ -28,7 +26,6 @@ OBJS += \
 CPP_DEPS += \
 ./src/Decimate.d \
 ./src/FIRFilter.d \
-./src/FirFilterDesigner.d \
 ./src/RealFIRFilter.d \
 ./src/Tuner.d \
 ./src/am_fm_pm_baseband_demod.d \
