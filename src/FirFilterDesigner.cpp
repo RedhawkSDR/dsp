@@ -225,7 +225,6 @@ size_t FirFilterDesigner::wdfirCx (
 		if (type==FIRFilter::bandstop)
 			inputType=FIRFilter::highpass;
 		RealArray r;
-		Real tmp(fabs(fhNorm-flNorm));
 		size_t ret =  wdfir(r, inputType, ripple, twNorm, fabs(fhNorm-flNorm)/2.0, 0, minTaps,maxTaps);
 
 		filtCoeff.resize(ret);
