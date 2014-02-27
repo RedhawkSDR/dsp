@@ -22,6 +22,7 @@ program.  If not, see http://www.gnu.org/licenses/.
   <author>
     <name>null</name>
   </author>
+  <description>basic-components dsp signal processing library.  Much of the actual signal processing code is contained in this library which is independent of REDHAWK.</description>
   <implementation id="firstImplementation">
     <description>The implementation contains descriptive information about the template for a software component.</description>
     <code type="SharedLibrary">
