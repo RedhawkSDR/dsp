@@ -57,6 +57,7 @@ public:
 	size_t getFrameSize();
 	void setOverlap(long overlap);
 	long getOverlap();
+	void flush();
 
 private:
 	void updateInternals();
@@ -70,6 +71,8 @@ private:
 	long overlap_;
 
 	size_t stride_;
+	// throwAwayIndex_ is used because we are throwing data away
+	// because the overlap is negative and the user has requested this usage
 	size_t throwAwayIndex_;
 
 	boost::mutex boostLock_;

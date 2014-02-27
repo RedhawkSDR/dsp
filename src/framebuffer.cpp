@@ -52,6 +52,15 @@ size_t framebuffer<iterT>::getNumFrames(size_t dataElements)
 }
 
 template <typename iterT>
+void framebuffer<iterT>::flush()
+{
+	boost::mutex::scoped_lock lock(boostLock_);
+	last_->clear();
+	next_->clear();
+	throwAwayIndex_=0;
+}
+
+template <typename iterT>
 void framebuffer<iterT>::newData(frame input, std::vector<frame>& output)
 {
 	size_t inputSize = input.end-input.begin;
