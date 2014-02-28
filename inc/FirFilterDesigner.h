@@ -65,7 +65,7 @@ public:
 	 * Use the RealArray or ComplexArray depending on if you want to design real or complex filter taps
 	 *
 	 * All of the Norm frequencies are scaled so that the sampling frequency (fs) is 1
-	 * and the Nyquest rate (fs/2) is 1/2. In otherwords: fNorm = fHz/samplingFrequencyHz.
+	 * and the Nyquist rate (fs/2) is 1/2. In otherwords: fNorm = fHz/samplingFrequencyHz.
 	 * Here are the valid frequency inputs:
 	 *   	for filter type: lowpass, highpass, real bandpass, real bandstop:
 	 *      	fNorm [0:.5]
@@ -73,17 +73,17 @@ public:
 	 *		for filter type complex bandpass, complex bandstop:
 	 *			fNorm [-.5:.5]
 	 *         	fHz [-fs/2:fs/2]
-	 * fl and fh represents the lower and higher transition frequencies to design the filter.
+	 * fl and fh represent the lower and higher transition frequencies to design the filter.
 	 * fh is IGNORED for lowpass/highpass filters and required only for bandpass and bandstop filter types
 	 *
-	 * ripple (in amplitude) represents the maximium aplitude deviation in passband and stopband
+	 * ripple (in amplitude) represents the maximium amplitude deviation in passband and stopband
 	 * tw (transition width) represents the frequency duration to transition from pass to stop band
-	 * These two parameters are used to determine the number of taps to meet the design constraints
-	 * however, minTaps and maxTaps can provide bounds on the filter Length to override these values if necessary
+	 * These two parameters are used to determine the number of taps to meet the design constraints.
+	 * However, minTaps and maxTaps can provide bounds on the filter length to override these values if necessary.
 	 *
-	 * Here is the expected Frequency domain filter results for each of the various cases.
-	 * Note that the bandpass and bandstop filters have DIFFERENT behavior for the real/complex filter types
-	 * But the lowpass and highpass filters give the same results for the real and complex apis
+	 * Here is the expected frequency domain filter results for each of the various cases.
+	 * Note that the bandpass and bandstop filters have DIFFERENT behavior for the real/complex filter types,
+	 * but the lowpass and highpass filters give the same results for the real and complex APIs.
 	 *
 	 *    	               Lowpass (Real/Cx)
 	 *                    |-----------------|

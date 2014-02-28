@@ -78,7 +78,7 @@ float ArbitraryRateResamplerClass::newData(std::vector<float>& real_in)
 	std::vector<float>::iterator i = real_in.begin();
 	if (! cmplxOldData.empty())
 	{
-		//push threw up to 2*a complex samples to clear the filter taps from all the complex data
+		//push through up to 2*a complex samples to clear the filter taps from all the complex data
 		size_t twoA = 2*kernel._a;
 		size_t numSamples = std::min(twoA, real_in.size());
 		bool cmplxFlushed = numSamples==twoA;
@@ -166,7 +166,7 @@ void ArbitraryRateResamplerClass::next(T& val,  std::vector<T>& output, std::deq
 				//we will output a 0 to zero pad the output
 				break;
 		}
-		//typical case - compute filter coeficients for each "x" value apply to our history buffer to compute this output
+		//typical case - compute filter coefficients for each "x" value apply to our history buffer to compute this output
 		for (; i !=oldData.end(); i++)
 		{
 			out+=*i*func(x);

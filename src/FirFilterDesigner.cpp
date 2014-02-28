@@ -40,7 +40,7 @@ size_t FirFilterDesigner::wdfir (
 {
 	if (type == FIRFilter::hilbert)
 	{
-		std::cerr<<"hilbert filters are not supported "<<std::endl;
+		std::cerr<<"Hilbert filters are not supported"<<std::endl;
 		filtCoeff.resize(0);
 		return 0;
 	}
@@ -66,13 +66,13 @@ size_t FirFilterDesigner::wdfir (
     size_t sz = kaiser.reset(ripple, twNorm);
     if ((maxTaps) != 0 and sz > maxTaps)
     {
-    	std::cout<<"your taps are too big changing form "<<sz <<" to "<<maxTaps<<std::endl;
+        std::cout<<"your taps are too big; changing from "<<sz <<" to "<<maxTaps<<std::endl;
     	sz=maxTaps;
     	kaiser.overrideSize(sz);
     }
     else if (sz<minTaps)
     {
-    	std::cout<<"your taps are too small changing form "<<sz <<" to "<<minTaps<<std::endl;
+        std::cout<<"your taps are too small; changing from "<<sz <<" to "<<minTaps<<std::endl;
     	sz=minTaps;
     	kaiser.overrideSize(sz);
     }
@@ -358,7 +358,7 @@ void KaiserWindowDesigner::calculateWindow (RealArray &w, Real beta)
             w[jj] = in0 (beta * sqrt(1.0 - 4.0 * xi * xi / xind)) / bes;
     }
 
-}  // end getCoeficients
+}  // end calculateWindow
 
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 //

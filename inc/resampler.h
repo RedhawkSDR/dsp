@@ -32,7 +32,7 @@ void copy_n_elements(std::deque<T>& oldData, std::deque<T>& newData, size_t n)
 	}
 }
 
-//This is a class to compute the Lanczos Kernel for computing resampling fitler coeficients
+//This is a class to compute the Lanczos Kernel for computing resampling fitler coefficients
 template<typename OutType, typename InType>
 class LanczosKernel
 {
@@ -61,7 +61,7 @@ OutType LanczosKernel<OutType, InType>::getValue(InType& x)
 }
 
 //This is an arbitrary rate resampler for non-integer value decimation/interpolation
-//all computations are done int the time domain with a time varient filter whose coeficients are calculated
+//all computations are done int the time domain with a time varient filter whose coefficients are calculated
 //by the LanczosKernel.  This is slowe then a frequency domain approach but can be useful for
 //cases where exact rate resampling is required
 class ArbitraryRateResamplerClass
