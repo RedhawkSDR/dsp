@@ -19,6 +19,19 @@
 #include <iostream>
 #include <complex>
 
+template<typename T>
+T validateAlpha(T alpha) {
+	if (alpha <= 1e-6) {
+		std::cout << "AGC - error - alpha too small " << alpha << std::endl;
+		alpha = 1e-6;
+	} else if (alpha > .999999) {
+		std::cout << "AGC - error - alpha too large " << alpha << std::endl;
+		alpha = .999999;
+	}
+
+	return alpha;
+}
+
 //put this one first so it is chosen when it can be
 template<typename T>
 T abs2(std::complex<T> val)
@@ -120,16 +133,7 @@ void ExpAgc<T,U>::initialize()
 template<typename T, typename U>
 T ExpAgc<T,U>::setAlpha(T alpha)
 {
-	if (alpha <=1e-6)
-	{
-		std::cout<<"AGC - error - alpha too small "<<alpha<<std::endl;
-		alpha = 1e-6;
-	}
-	else if (alpha>.999999)
-	{
-		std::cout<<"AGC - error - alpha too large "<<alpha<<std::endl;
-		alpha = .999999;
-	}
+	alpha = validateAlpha(alpha);
 	_alpha = alpha;
 	_omega = 1-_alpha;
 	return _alpha;
@@ -164,3 +168,4 @@ T ExpAgc<T,U>::getMinPower()
 // Instantiate myclass for the supported template type parameters
 template class ExpAgc<float,float>;
 template class ExpAgc<float, std::complex<float> >;
+template float validateAlpha<float>(float);

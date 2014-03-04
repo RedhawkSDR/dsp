@@ -21,6 +21,9 @@
 #ifndef EXP_AGC_H_
 #define EXP_AGC_H_
 
+template<typename T>
+T validateAlpha(T alpha);
+
 template<typename T, typename U>
 class ExpAgc {
 	//This class is used to implement an exponential moving average agc
