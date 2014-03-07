@@ -15,15 +15,6 @@
  * You should have received a copy of the GNU Lesser General Public License along with this 
  * program.  If not, see http://www.gnu.org/licenses/.
  */
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-//
-// Description:
-//   This file contains the Tuner class declaration.
-//
-//   TO DO:
-//      1. *** WORK IN PROGRESS ***
-//      2. Filter bandwidth needs to be added
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 #ifndef __TUNER_H__
 #define __TUNER_H__
@@ -32,7 +23,10 @@
 
 #include "DataTypes.h"
 
-
+/**
+ * \brief Tuner class
+ * \todo Filter bandwidth needs to be added
+ */
 class Tuner
 {
 public:

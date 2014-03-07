@@ -31,11 +31,11 @@ public:
     bool run(void);
 
 private:
-    ComplexVector& _input;		// Reference to input buffer
-    ComplexVector& _output;		// Reference to output buffer
+    ComplexVector& _input;    // Reference to input buffer
+    ComplexVector& _output;   // Reference to output buffer
 
     size_t _inputOffset;
-    size_t _d;					// Decimation factor
+    size_t _d;                // Decimation factor
 };
 
 #endif  // __DECIMATE_H__

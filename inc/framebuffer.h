@@ -22,60 +22,66 @@
 #include <vector>
 #include <boost/thread/mutex.hpp>
 
+/**
+ * \brief Class to buffer data for you and frame it up
+ *
+ * You get consistant frame sizes out no matter how much input is pushed in.
+ * You can choose to overlap or skip data for the frames. If you set overlap > 0
+ * then you overlap output data. If you set overlap < 0 then you throw data away.
+ * This class works with iterators so that data copies are reduced to an absolute
+ * minimium.
+ */
 template <typename iterT>
 class framebuffer {
-	//Class to buffer data for you and frame it up
-	//you get consistant frame sizes out no matter how you push input in
-	//furthermore - you can choose to overlap or skip data for the frames
-	//if you set overlap>0 then you overlap output data
-	//if you set overlap<0 then you throw data away
-	//this class works with iterators so that data copies
-	//are reduced to an absolute minimium
-
 public:
-	framebuffer(size_t frameSize, long overlap=0);
-	virtual ~framebuffer();
+    framebuffer(size_t frameSize, long overlap=0);
+    virtual ~framebuffer();
 
-	typedef typename iterT::value_type valueT;
-	typedef typename std::vector<valueT> vectorT;
+    typedef typename iterT::value_type valueT;
+    typedef typename std::vector<valueT> vectorT;
 
-	struct frame
-	{
-		iterT begin;
-		iterT end;
-	};
-	//call this method in a loop to frame up your data
-	//output is a vector of data frames for you to operate on
-	void newData(frame input,std::vector<frame>& output);
+    struct frame
+    {
+        iterT begin;
+        iterT end;
+    };
 
-	//convienience function for vectors - but the same as
-	//the other newData call
-	void newData(vectorT& input,std::vector<frame>& output);
+    /**
+     * Call this method in a loop to frame up your data
+     *
+     * \param output a vector of data frames for you to operate on
+     */
+    void newData(frame input, std::vector<frame>& output);
 
-	//modify the frame parameters
-	void setFrameSize(size_t frameSize);
-	size_t getFrameSize();
-	void setOverlap(long overlap);
-	long getOverlap();
-	void flush();
+    /**
+     * Convienience function for vectors - but the same as \ref #newData(frame, std::vector<frame>&)
+     */
+    void newData(vectorT& input, std::vector<frame>& output);
+
+    //modify the frame parameters
+    void setFrameSize(size_t frameSize);
+    size_t getFrameSize();
+    void setOverlap(long overlap);
+    long getOverlap();
+    void flush();
 
 private:
-	void updateInternals();
-	size_t getNumFrames(size_t dataElements);
-	vectorT vecA_;
-	vectorT vecB_;
-	vectorT* last_;
-	vectorT* next_;
+    void updateInternals();
+    size_t getNumFrames(size_t dataElements);
+    vectorT vecA_;
+    vectorT vecB_;
+    vectorT* last_;
+    vectorT* next_;
 
-	size_t frameSize_;
-	long overlap_;
+    size_t frameSize_;
+    long overlap_;
 
-	size_t stride_;
-	// throwAwayIndex_ is used because we are throwing data away
-	// because the overlap is negative and the user has requested this usage
-	size_t throwAwayIndex_;
+    size_t stride_;
+    // throwAwayIndex_ is used because we are throwing data away
+    // because the overlap is negative and the user has requested this usage
+    size_t throwAwayIndex_;
 
-	boost::mutex boostLock_;
+    boost::mutex boostLock_;
 
 };
 

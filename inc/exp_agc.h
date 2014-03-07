@@ -15,8 +15,8 @@
  * You should have received a copy of the GNU Lesser General Public License along with this 
  * program.  If not, see http://www.gnu.org/licenses/.
  */
-#include"DataTypes.h"
-#include<vector>
+#include "DataTypes.h"
+#include <vector>
 
 #ifndef EXP_AGC_H_
 #define EXP_AGC_H_
@@ -24,35 +24,37 @@
 template<typename T>
 T validateAlpha(T alpha);
 
+/**
+ * \brief This class is used to implement an exponential moving average AGC
+ * \see http://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average for an explanation
+ */
 template<typename T, typename U>
 class ExpAgc {
-	//This class is used to implement an exponential moving average agc
-	//See http://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average for an explanation
 public:
-	ExpAgc(std::valarray<U>& input, std::valarray<U>& output, T avgPower, T minPower, T maxPower, T eps, T alpha);
-	void process();
-	T setAlpha(T alpha);
-	T getAlpha();
-	T getMaxPower();
-	void setMaxPower(T maxPower);
-	T getMinPower();
-	void setMinPower(T minPower);
-	virtual ~ExpAgc();
+    ExpAgc(std::valarray<U>& input, std::valarray<U>& output, T avgPower, T minPower, T maxPower, T eps, T alpha);
+    void process();
+    T setAlpha(T alpha);
+    T getAlpha();
+    T getMaxPower();
+    void setMaxPower(T maxPower);
+    T getMinPower();
+    void setMinPower(T minPower);
+    virtual ~ExpAgc();
 private:
 
-	void initialize();
+    void initialize();
 
-	std::valarray<U> &_input;
-	std::valarray<U> &_output;
+    std::valarray<U> &_input;
+    std::valarray<U> &_output;
 
-	double _currentPower;
-	T _avgPower;
-	T _minPower;
-	T _maxPower;
-	T _eps;
-	T _alpha;
-	T _omega;
-	bool  _init;
+    double _currentPower;
+    T _avgPower;
+    T _minPower;
+    T _maxPower;
+    T _eps;
+    T _alpha;
+    T _omega;
+    bool  _init;
 };
 
 #endif /* EXP_AGC_H_ */

@@ -15,20 +15,18 @@
  * You should have received a copy of the GNU Lesser General Public License along with this 
  * program.  If not, see http://www.gnu.org/licenses/.
  */
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-//
-// Description:
-//   This file contains the Filter class declaration.  Code was copied from
-//   "C++ Algorithms for Digital Signal Processing", 2nd ed. by Embree &
-//   Danieli and modified.
-//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 #ifndef _FIRFILTER_H
 #define _FIRFILTER_H
 
 #include "DataTypes.h"
 
-
+/**
+ * \brief Filter class
+ *
+ * Code was copied from "C++ Algorithms for Digital Signal Processing",
+ * 2nd ed. by Embree & Danieli and modified.
+ */
 class FIRFilter
 {
 public:
@@ -57,9 +55,9 @@ public:
 protected:
     const ComplexArray &vIn;
     ComplexArray &vOut;
-    RealArray _filtCoeff;      // Filter coefficients
-    ComplexArray _z;           // Filter history
-    Complex *m_hist;            // Constant ptr to filter history
+    RealArray _filtCoeff;       ///< Filter coefficients
+    ComplexArray _z;            ///< Filter history
+    Complex *m_hist;            ///< Constant ptr to filter history
 
 private:
     FIRFilter();                // No default constructor

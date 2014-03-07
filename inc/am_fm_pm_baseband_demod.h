@@ -23,12 +23,12 @@
 class AmFmPmBasebandDemod
 {
 public:
-	AmFmPmBasebandDemod(ComplexArray &input, RealArray *am, RealArray* pm, RealArray* fm, double freqMag, double phaseMag,float initalPhase = 0);
+    AmFmPmBasebandDemod(ComplexArray &input, RealArray *am, RealArray* pm, RealArray* fm, double freqMag, double phaseMag,float initalPhase = 0);
     virtual ~AmFmPmBasebandDemod(void);
     bool process(void);
     Real getPhase()
     {
-    	return phaseA;
+        return phaseA;
     }
 private:
     ComplexArray &_input;
