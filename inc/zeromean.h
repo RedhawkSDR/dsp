@@ -20,22 +20,47 @@
 #define ZEROMEAN_H_
 
 /**
+ * divide a number by a size_t
+ *
+ * \tparam T iterator
+ * \tparam U iterator
+ */
+template<typename T>
+inline T divide(const T& a, const size_t& b)
+{
+	return a/b;
+}
+
+//to do -- add more specializations here for other complex types if required
+/**
+ * divide a complex<float> by a size_t
+ *
+ * \tparam T iterator
+ * \tparam U iterator
+ */
+template<>
+inline std::complex<float> divide(const std::complex<float>& a, const size_t& b)
+{
+	return std::complex<float>(a.real()/b,a.imag()/b);
+}
+
+/**
  * Remove the mean from data in a container
- * 
+ *
  * \tparam T iterator
  * \tparam U iterator
  */
 template<typename T, typename U>
-float zeroMean(T begin, T end, U out)
+typename T::value_type zeroMean(T begin, T end, U out)
 {
-    float total=0;
+	typename T::value_type total=0;
     T i = begin;
     size_t count=0;
     for (; i!=end; i++, count++)
     {
         total+=*i;
     }
-    float mean = total/count;
+    typename T::value_type mean(divide(total, count));
     for (i=begin; i!=end; i++, out++)
     {
         *out=*i -mean;
