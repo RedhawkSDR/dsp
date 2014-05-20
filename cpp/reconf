@@ -1,0 +1,15 @@
+#!/bin/sh
+
+rm -f config.cache
+
+# Setup the libtool stuff
+if [ -e /usr/local/share/aclocal/libtool.m4 ]; then
+    /bin/cp /usr/local/share/aclocal/libtool.m4 aclocal.d/acinclude.m4
+elif [ -e /usr/share/aclocal/libtool.m4 ]; then
+    /bin/cp /usr/share/aclocal/libtool.m4 acinclude.m4
+fi
+libtoolize --force --automake
+
+aclocal -I ../aclocal
+autoconf
+automake --foreign --add-missing

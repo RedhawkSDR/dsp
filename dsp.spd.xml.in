@@ -17,16 +17,15 @@ You should have received a copy of the GNU Lesser General Public License along w
 program.  If not, see http://www.gnu.org/licenses/.
 -->
 <!DOCTYPE softpkg PUBLIC "-//JTRS//DTD SCA V2.2.2 SPD//EN" "softpkg.dtd">
-<softpkg id="DCE:633952b8-1ff7-4d50-80ff-30b103c10833" name="dsp" type="sca_compliant">
+<softpkg id="DCE:633952b8-1ff7-4d50-80ff-30b103c10833" name="@PACKAGE_NAME@" type="sca_compliant">
   <title></title>
   <author>
-    <name>null</name>
+    <name>REDHAWK</name>
   </author>
   <description>basic-components dsp signal processing library.  Much of the actual signal processing code is contained in this library which is independent of REDHAWK.</description>
-  <implementation id="firstImplementation">
-    <description>The implementation contains descriptive information about the template for a software component.</description>
+  <implementation id="cpp">
     <code type="SharedLibrary">
-      <localfile name="Release"/>
+      <localfile name="cpp/lib"/>
     </code>
     <compiler name="/usr/bin/gcc" version="4.1.2"/>
     <programminglanguage name="C++"/>

@@ -15,8 +15,11 @@ You should have received a copy of the GNU Lesser General Public License along w
 program.  If not, see http://www.gnu.org/licenses/.
 
 BUILDING THIS LIBRARY:
-1) cd Release/
-2) make
+1) cd cpp/
+2) ./reconf
+3) ./configure
+4) make
+5) make install
 
 OR
 
@@ -28,10 +31,4 @@ INSTALLING THIS LIBRBARY:
 Once built, install this component into $SDRROOT for use by other components. This is done by 
 copying this folder into $SDROOT/dom/components/ or through the REDHAWK IDE by dragging the project 
 folder over to the 'Target SDR' in the 'SCA Explorer' view.
-
-OR
-from the command line type:
-make install 
-
-
 

@@ -1,2 +1,4 @@
-Release/
 doc/
+.libs/
+src/.dirstamp
+dsp.pc
