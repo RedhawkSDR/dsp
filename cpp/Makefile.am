@@ -1,7 +1,6 @@
 lib_LTLIBRARIES = lib@PACKAGE_NAME@.la
+lib@PACKAGE_NAME@_la_CXXFLAGS = -Wall -I$(top_srcdir)/inc $(BOOST_CPPFLAGS)
 lib@PACKAGE_NAME@_la_LDFLAGS = $(BOOST_LDFLAGS) $(BOOST_THREAD_LIB) $(BOOST_SYSTEM_LIB)
-
-AM_CXXFLAGS = -Wall -I$(top_srcdir)/inc $(BOOST_CPPFLAGS)
 
 libdir = $(spkg_lib_dir)
 dsp_src = \
@@ -34,7 +33,7 @@ inc/zeromean.h
 dist_inc_DATA = $(dsp_inc)
 
 xmldir = $(spkg_dir)
-dist_xml_DATA = @PACKAGE_NAME@.spd.xml
+dist_xml_DATA = ../@PACKAGE_NAME@.spd.xml
 
 pkgconfigdir = $(spkg_pkgconfig_dir)
 dist_pkgconfig_DATA = @PACKAGE_NAME@.pc

@@ -35,6 +35,6 @@ AX_BOOST_SYSTEM
 
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
-AC_CONFIG_FILES([Makefile ${PACKAGE_NAME}.pc:dsp.pc.in ${PACKAGE_NAME}.spd.xml:../dsp.spd.xml.in])
+AC_CONFIG_FILES([Makefile ${PACKAGE_NAME}.pc:dsp.pc.in ../${PACKAGE_NAME}.spd.xml:../dsp.spd.xml.in])
 AC_OUTPUT
 
