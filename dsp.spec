@@ -21,7 +21,7 @@
 
 Name:           dsp
 Version:        1.0.0
-Release:        2%{?dist}
+Release:        9%{?dist}
 Summary:        Component Library %{name}
 
 Group:          REDHAWK/Components
@@ -35,6 +35,8 @@ BuildRequires:  boost-devel >= 1.41
 %else
 BuildRequires:  boost141-devel
 %endif
+
+Requires(pre):  redhawk
 
 
 %description
