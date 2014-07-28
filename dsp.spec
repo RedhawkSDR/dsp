@@ -21,7 +21,7 @@
 
 Name:           dsp
 Version:        1.0.0
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        Component Library %{name}
 
 Group:          REDHAWK/Components
