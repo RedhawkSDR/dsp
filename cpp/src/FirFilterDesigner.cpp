@@ -348,14 +348,19 @@ void KaiserWindowDesigner::calculateWindow (RealArray &w, Real beta)
     Real bes = in0 (beta);
     Real xind = pow ((w.size() - 1.0), 2);
 
+    Real arg;
+
     for (size_t ii = 0; ii < n; ii++)
     {
         Real xi = ii;
         if (ieo == 0)
             xi += 0.5;
         size_t jj = n + ii - ieo;
+        // there is a case do to floating point error when you end up with a very small negative number
+        // therefore - ensure that the number is always non-negative so we can take the square root of it
+        arg=std::max(1.0 - 4.0 * xi * xi / xind,0.0);
         w[n - 1 - ii] =
-            w[jj] = in0 (beta * sqrt(1.0 - 4.0 * xi * xi / xind)) / bes;
+            w[jj] = in0 (beta * sqrt(arg)) / bes;
     }
 
 }  // end calculateWindow
