@@ -21,7 +21,7 @@
 
 Name:           dsp
 Version:        1.0.1
-Release:        10%{?dist}
+Release:        1%{?dist}
 Summary:        Component Library %{name}
 
 Group:          REDHAWK/Components
@@ -93,6 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 %exclude %{_prefix}/dom/deps/%{name}/cpp/lib/pkgconfig
 
 %files devel
+%defattr(-,redhawk,redhawk,-)
 %{_prefix}/dom/deps/%{name}/cpp/include
 %{_prefix}/dom/deps/%{name}/cpp/lib/pkgconfig
 
