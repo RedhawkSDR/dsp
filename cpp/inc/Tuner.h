@@ -41,8 +41,9 @@ private:
     ComplexVector    &_input;               // Reference to input buffer
     ComplexVector    &_output;              // Reference to output buffer
 
-    Complex          _phasor;              // Current phase
-    Complex          _dphasor;             // Phase increment
+    double          _cycles;              // Current phase in cycles (fs maps to 1)
+    double 		 	_dcycles;             // Phase increment in cycles
+    Complex 		_dphasor;			  // Complex phasor representing Phase increment
 
 #ifdef TUNER_DEBUG
     ComplexVector phasorVec;

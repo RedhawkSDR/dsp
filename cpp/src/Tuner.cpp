@@ -29,6 +29,7 @@
 #include <cmath>
 #include <numeric>
 #include "Tuner.h"
+#include <iostream>
 
 #ifdef TUNER_DEBUG
 #include <fstream>
@@ -51,30 +52,7 @@ using namespace std;
 //
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
-template<class T> class Phasor
-{
-public:
-    Phasor (T normFc = 0)
-    {
-        init(normFc);
-    }
 
-    void init (T normFc)
-    {
-        _dphasor = T(cos(2*M_PI*normFc), sin(-2*M_PI*normFc));
-    }
-
-    T operator()(T op)
-    {
-        T retval = op * _phasor;
-        _phasor *= _dphasor;    // This may have to be recalculated using exp()
-        return retval;
-    }
-
-private:
-    T _phasor;
-    T _dphasor;
-};
 
 
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
@@ -139,7 +117,8 @@ Tuner::~Tuner()
 
 void Tuner::retune(Real normFc)
 {
-    _dphasor = Complex(cos(2*M_PI*normFc), sin(-2*M_PI*normFc));
+	_dphasor     = Complex(cos(2*M_PI*normFc), sin(-2*M_PI*normFc));
+    _dcycles = normFc;
 }
 
 
@@ -158,7 +137,7 @@ void Tuner::retune(Real normFc)
 
 void Tuner::reset(void)
 {
-    _phasor = Complex(1,0);
+    _cycles = 0;
 }
 
 
@@ -179,18 +158,45 @@ void Tuner::reset(void)
 
 bool Tuner::run(void)
 {
-	//transform(&_input[0], &_input[_input.size()], &_output[0], Phasor<ComplexVector::value_type>());
+    // bsg - I've made some modifications in here to try to compensate for drift and the magnitude
+	// growing/shrinking due to floating point round of errors and abs(exp^(j*theta)) not being EXACTLY one
+	// this caused a systemic problem which reduced/increased (depending upon the tune value used)
+	// the magnitude of the tuner over time so that TFD, when ran for minutes/hours produced a notable gain offset
+
+	// to cope with this - I'm storing all the phase values as double precision floating point values
+	// this is now in fractions of a cycle (fs maps to 1)
+
+	// in this loop - we create a complex floating point exponential _ph and use it with
+	// compelex floating point differential exponental _dphasor
+
+	// after the loop - we modify the double value "_cycles" to take into account the adjustment to the oscilator
+	// thus - within the loop we get the fast floating point math (with small erorrs)
+	// but outside the loop we keep acurate representation of the oscilator phase with double precision values to
+	// avoid the systemic errors
+
+	//current phase in radians
+	double cyclesRad = 2*M_PI*_cycles;
+	Complex phasor(cos(cyclesRad), -sin(cyclesRad));
     for (Complex *x= &_input[0],
                  *xend = &_input[_input.size()],
                  *y    = &_output[0];
                  x != xend; ++x, ++y)
     {
-        *y = *x * _phasor;
+        *y = *x * phasor;
 #ifdef TUNER_DEBUG
-    	phasorVec.push_back(_phasor);
+    	phasorVec.push_back(_ph);
 #endif
-    	_phasor *= _dphasor;
-    }
+    	//phasor is acumulating floating round off errors - but this is (hopefully) not for too many samples in this loop
+    	phasor *= _dphasor;
+    };
+
+    // adjust the current phase for the number of samples processed
+    _cycles +=(_input.size()*_dcycles);
+    //now get rid of the integer part - we only care about the fractional part of the cycles
+    //of _cycles
+    double tmp;
+    _cycles = modf(_cycles,&tmp);
+
 
 #ifdef TUNER_DEBUG
     std::ofstream tunerFile("tunersinusoid.dat", ios_base::out|ios_base::binary);
