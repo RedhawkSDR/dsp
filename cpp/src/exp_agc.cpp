@@ -57,7 +57,8 @@ ExpAgc<T,U>::ExpAgc(std::valarray<U>& input, std::valarray<U>& output, T avgPowe
  _avgPower(avgPower),
  _minPower(minPower),
  _maxPower(maxPower),
- _eps(eps)
+ _eps(eps),
+ _init(false)
 {
 	setAlpha(alpha);
 	_output.resize(input.size());
@@ -163,6 +164,21 @@ template<typename T, typename U>
 T ExpAgc<T,U>::getMinPower()
 {
 	return _minPower;
+}
+template<typename T, typename U>
+T ExpAgc<T,U>::getAvgPower()
+{
+	return _avgPower;
+}
+template<typename T, typename U>
+void ExpAgc<T,U>::setAvgPower(T avgPower)
+{
+	_avgPower =avgPower;
+}
+template<typename T, typename U>
+T ExpAgc<T,U>::getCurrentPower()
+{
+	return _currentPower;
 }
 
 // Instantiate myclass for the supported template type parameters

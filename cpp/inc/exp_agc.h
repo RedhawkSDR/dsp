@@ -39,6 +39,9 @@ public:
     void setMaxPower(T maxPower);
     T getMinPower();
     void setMinPower(T minPower);
+    T getAvgPower();
+    void setAvgPower(T avgPower);
+    T getCurrentPower();
     virtual ~ExpAgc();
 private:
 
