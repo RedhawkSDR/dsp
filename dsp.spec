@@ -20,7 +20,7 @@
 %define _prefix %{_sdrroot}
 
 Name:           dsp
-Version:        1.0.1
+Version:        1.1.0
 Release:        2%{?dist}
 Summary:        Component Library %{name}
 
