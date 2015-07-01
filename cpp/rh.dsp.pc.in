@@ -4,7 +4,8 @@
  *
  * This file is part of REDHAWK Basic Components dsp library.
  *
- * REDHAWK Basic Components dsp library is free software: you can redistribute it and/or modify it under the terms of * the GNU Lesser General Public License as published by the Free Software Foundation, either
+ * REDHAWK Basic Components dsp library is free software: you can redistribute it and/or modify it under the terms of 
+ * the GNU Lesser General Public License as published by the Free Software Foundation, either
  * version 3 of the License, or (at your option) any later version.
  *
  * REDHAWK Basic Components dsp library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
@@ -17,13 +18,12 @@
 
 prefix=@prefix@
 exec_prefix=@exec_prefix@
-libdir=@spkg_lib_dir@
-includedir=@spkg_include_dir@
-ARCH=@host_cpu@
+libdir=@libdir@
+includedir=@includedir@
 
-Name: @PACKAGE_NAME@
+Name: rh.dsp
 Description: basic-components dsp signal processing library
-Requires:
-Version: @VERSION@
-Libs: -L${libdir} -l@PACKAGE_NAME@
+Requires: 
+Version: 1.1.0
+Libs: -L${libdir} -ldsp
 Cflags: -I${includedir}

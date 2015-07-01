@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softpkg PUBLIC "-//JTRS//DTD SCA V2.2.2 SPD//EN" "softpkg.dtd">
 <!-- 
 This file is protected by Copyright. Please refer to the COPYRIGHT file distributed with this 
 source distribution.
@@ -16,18 +17,15 @@ PURPOSE.  See the GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License along with this 
 program.  If not, see http://www.gnu.org/licenses/.
 -->
-<!DOCTYPE softpkg PUBLIC "-//JTRS//DTD SCA V2.2.2 SPD//EN" "softpkg.dtd">
-<softpkg id="DCE:633952b8-1ff7-4d50-80ff-30b103c10833" name="@PACKAGE_NAME@" type="sca_compliant" version="1.1.0">
-  <title></title>
-  <author>
-    <name>REDHAWK</name>
-  </author>
+<softpkg id="DCE:cfa0c8b6-f2b6-49ce-ace1-5533dec9f008" name="rh.dsp" type="2.0.0" version="1.1.0">
+  <author/>
   <description>basic-components dsp signal processing library.  Much of the actual signal processing code is contained in this library which is independent of REDHAWK.</description>
   <implementation id="cpp">
+    <description>The implementation contains descriptive information about the template for a software component.</description>
     <code type="SharedLibrary">
       <localfile name="cpp/lib"/>
     </code>
-    <compiler name="/usr/bin/gcc" version="4.1.2"/>
+    <compiler name="/usr/bin/gcc" version="4.4.7"/>
     <programminglanguage name="C++"/>
     <humanlanguage name="EN"/>
     <os name="Linux"/>

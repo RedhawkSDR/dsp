@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 #
 # This file is protected by Copyright. Please refer to the COPYRIGHT file distributed with this 
 # source distribution.
@@ -16,54 +15,50 @@
 # You should have received a copy of the GNU Lesser General Public License along with this 
 # program.  If not, see http://www.gnu.org/licenses/.
 #
+# By default, the RPM will install to the standard REDHAWK SDR root location (/var/redhawk/sdr)
 %{!?_sdrroot: %define _sdrroot /var/redhawk/sdr}
-%define _prefix %{_sdrroot}
+%define _prefix %{_sdrroot}/dom/deps/rh/dsp
 
-Name:           dsp
+# Point install paths to locations within our target SDR root
+%define _libdir        %{_prefix}/cpp/lib
+%define _sysconfdir    %{_prefix}/etc
+%define _localstatedir %{_prefix}/var
+%define _mandir        %{_prefix}/man
+%define _infodir       %{_prefix}/info
+
+Name:           rh.dsp
 Version:        1.1.0
-Release:        2%{?dist}
-Summary:        Component Library %{name}
+Release:        1%{?dist}
+Summary:        Shared package %{name}
 
-Group:          REDHAWK/Components
+Group:          REDHAWK/Shared Packages
 License:        LGPLv3+
 Source0:        %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
+BuildRequires:  redhawk-devel >= 2.0
 BuildRequires:  autoconf automake libtool
-%if 0%{?rhel} >= 6 || 0%{?fedora} >= 12
-BuildRequires:  boost-devel >= 1.41
-%else
-BuildRequires:  boost141-devel
-%endif
 
-Requires(pre):  redhawk
 
 
 %description
-Component Library %{name}
+Shared package %{name}
  * Commit: __REVISION__
  * Source Date/Time: __DATETIME__
 
 %package devel
-Summary:        %{name} development package
-Group:          REDHAWK/Components
-Requires:       %{name} = %{version}
-%if 0%{?rhel} >= 6 || 0%{?fedora} >= 12
-Requires:       boost-devel >= 1.41
-%else
-Requires:       boost141-devel
-%endif
+Summary:        Shared package %{name}
+Group:          REDHAWK/Shared Packages
+Requires:       %{name} = %{version}-%{release}
 
 %description devel
-Development headers and libraries for %{name}
-
+Libraries and header files for shared package %{name}
 
 %prep
 %setup -q
 
 
 %build
-export SDRROOT=%{_sdrroot}
 # Implementation cpp
 pushd cpp
 ./reconf
@@ -86,14 +81,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,redhawk,redhawk,-)
-%dir %{_prefix}/dom/deps/%{name}
-%{_prefix}/dom/deps/%{name}/dsp.spd.xml
-%{_prefix}/dom/deps/%{name}/cpp
-%exclude %{_prefix}/dom/deps/%{name}/cpp/include
-%exclude %{_prefix}/dom/deps/%{name}/cpp/lib/pkgconfig
+%dir %{_sdrroot}/dom/deps/rh
+%dir %{_sdrroot}/dom/deps/rh/dsp
+%{_prefix}/dsp.spd.xml
+%{_prefix}/cpp
+%exclude %{_libdir}/libdsp.la
+%exclude %{_libdir}/libdsp.so
+%exclude %{_libdir}/pkgconfig
 
 %files devel
 %defattr(-,redhawk,redhawk,-)
-%{_prefix}/dom/deps/%{name}/cpp/include
-%{_prefix}/dom/deps/%{name}/cpp/lib/pkgconfig
+%{_libdir}/libdsp.la
+%{_libdir}/libdsp.so
+%{_libdir}/pkgconfig
+%{_prefix}/include
 

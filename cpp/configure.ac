@@ -1,14 +1,14 @@
 # This file is protected by Copyright. Please refer to the COPYRIGHT file 
 # distributed with this source distribution.
 #
-# This file is part of REDHAWK Basic Components dsp library.
+# This file is part of REDHAWK Basic Components rh.dsp library.
 #
-# REDHAWK Basic Components dsp library is free software: you can redistribute
+# REDHAWK Basic Components rh.dsp library is free software: you can redistribute
 # it and/or modify it under the terms of the GNU Lesser General Public License 
 # as published by the Free Software Foundation, either version 3 of the License,
 # or (at your option) any later version.
 #
-# REDHAWK Basic Components dsp library is distributed in the hope that it 
+# REDHAWK Basic Components rh.dsp library is distributed in the hope that it 
 # will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
 # See the GNU Lesser General Public License for more details.
@@ -16,25 +16,27 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program.  If not, see http://www.gnu.org/licenses/.
 #
-AC_PREREQ(2.59)
-AC_INIT(dsp, 1.1.0)
-RH_SPKG_INIT
-
-AC_CONFIG_AUX_DIR([.])
+AC_INIT(rh.dsp, 1.1.0)
 AM_INIT_AUTOMAKE(nostdinc)
-LT_INIT
 
 AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_INSTALL
-AC_PROG_LIBTOOL
+LT_INIT([disable-static])
 
-AX_BOOST_BASE([1.41])
-AX_BOOST_THREAD
-AX_BOOST_SYSTEM
+AC_CORBA_ORB
+OSSIE_CHECK_OSSIE
+RH_SOFTPKG_PREFIX([rh.dsp],[cpp])
 
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
-AC_CONFIG_FILES([Makefile ${PACKAGE_NAME}.pc:dsp.pc.in ../${PACKAGE_NAME}.spd.xml:../dsp.spd.xml.in])
-AC_OUTPUT
+# Dependencies
+PKG_CHECK_MODULES([REDHAWK], [ossie >= 2.0])
+OSSIE_ENABLE_LOG4CXX
+AX_BOOST_BASE([1.41])
+AX_BOOST_SYSTEM
+AX_BOOST_THREAD
+AX_BOOST_REGEX
 
+AC_CONFIG_FILES([Makefile rh.dsp.pc])
+AC_OUTPUT

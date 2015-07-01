@@ -1,0 +1,8 @@
+c99df9fa4ab0cd042eac42fcee6441c3  reconf
+f881a90449248dff1af4bd0ba125067a  src/dsp.cpp
+7176b579292645e083451313f63faa91  configure.ac
+cc79b994ef360482c1d1299c5c50e187  include/dsp.h
+d69fb33ff46f5325603e93df5951bc6e  rh.dsp.pc.in
+29aaa86f5ec18a313decff605ac715c3  Makefile.am.ide
+b87651ea3565402473fb088004430fbf  build.sh
+30a01b404a9cce0e22a6423e5b9460b1  Makefile.am

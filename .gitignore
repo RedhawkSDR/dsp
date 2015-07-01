@@ -1,5 +1,4 @@
-dsp.pc
-dsp.spd.xml
+rh.dsp.pc
 *.la
 *.lo
 *.o
