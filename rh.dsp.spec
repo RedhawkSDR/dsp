@@ -27,7 +27,7 @@
 %define _infodir       %{_prefix}/info
 
 Name:           rh.dsp
-Version:        1.1.0
+Version:        2.0.0
 Release:        1%{?dist}
 Summary:        Shared package %{name}
 

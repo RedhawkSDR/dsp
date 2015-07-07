@@ -24,6 +24,6 @@ includedir=@includedir@
 Name: rh.dsp
 Description: basic-components dsp signal processing library
 Requires: 
-Version: 1.1.0
+Version: 2.0.0
 Libs: -L${libdir} -ldsp
 Cflags: -I${includedir}
