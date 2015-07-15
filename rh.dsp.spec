@@ -2,7 +2,7 @@
 # This file is protected by Copyright. Please refer to the COPYRIGHT file distributed with this 
 # source distribution.
 # 
-# This file is part of REDHAWK Basic Components dsp library.
+# This file is part of REDHAWK Basic Components rh.dsp shared library.
 # 
 # REDHAWK Basic Components dsp library is free software: you can redistribute it and/or modify it under the terms of 
 # the GNU Lesser General Public License as published by the Free Software Foundation, either 
@@ -29,9 +29,9 @@
 Name:           rh.dsp
 Version:        2.0.0
 Release:        1%{?dist}
-Summary:        Shared package %{name}
+Summary:        REDHAWK shared library %{name}
 
-Group:          REDHAWK/Shared Packages
+Group:          REDHAWK/Shared Libraries
 License:        LGPLv3+
 Source0:        %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -42,17 +42,17 @@ BuildRequires:  autoconf automake libtool
 
 
 %description
-Shared package %{name}
+Shared library %{name}
  * Commit: __REVISION__
  * Source Date/Time: __DATETIME__
 
 %package devel
-Summary:        Shared package %{name}
-Group:          REDHAWK/Shared Packages
+Summary:        REDHAWK shared library %{name}
+Group:          REDHAWK/Shared Libraries
 Requires:       %{name} = %{version}-%{release}
 
 %description devel
-Libraries and header files for shared package %{name}
+Libraries and header files for REDHAWK shared library %{name}
 
 %prep
 %setup -q

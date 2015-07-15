@@ -1,8 +1,8 @@
-# REDHAWK Basic Components dsp
+# REDHAWK Basic Components rh.dsp
  
 ## Description
 
-Contains the source and build script for the REDHAWK Basic Components dsp library
+Contains the source and build script for the REDHAWK Basic Components rh.dsp shared library
  
 ## REDHAWK Documentation
 
@@ -18,6 +18,6 @@ This work is protected by Copyright. Please refer to the [Copyright File](COPYRI
 
 ## License
 
-REDHAWK Basic Components dsp is licensed under the GNU Lesser General Public License (LGPL).
+REDHAWK Basic Components rh.dsp shared library is licensed under the GNU Lesser General Public License (LGPL).
 
 
