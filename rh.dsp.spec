@@ -42,7 +42,7 @@ BuildRequires:  autoconf automake libtool
 
 
 %description
-Shared library %{name}
+REDHAWK shared library %{name}
  * Commit: __REVISION__
  * Source Date/Time: __DATETIME__
 
@@ -62,7 +62,7 @@ Libraries and header files for REDHAWK shared library %{name}
 # Implementation cpp
 pushd cpp
 ./reconf
-%configure
+%configure --with-sdr=%{_sdrroot}
 make %{?_smp_mflags}
 popd
 
