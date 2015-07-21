@@ -158,18 +158,18 @@ void Tuner::reset(void)
 
 bool Tuner::run(void)
 {
-    // bsg - I've made some modifications in here to try to compensate for drift and the magnitude
+    // Some modifications were made in here to try to compensate for drift and the magnitude
 	// growing/shrinking due to floating point round of errors and abs(exp^(j*theta)) not being EXACTLY one
 	// this caused a systemic problem which reduced/increased (depending upon the tune value used)
 	// the magnitude of the tuner over time so that TFD, when ran for minutes/hours produced a notable gain offset
 
-	// to cope with this - I'm storing all the phase values as double precision floating point values
+	// to cope with this - all the phase values are stored as double precision floating point values
 	// this is now in fractions of a cycle (fs maps to 1)
 
-	// in this loop - we create a complex floating point exponential _ph and use it with
+	// in this loop - a complex floating point exponential _ph is created and used with
 	// compelex floating point differential exponental _dphasor
 
-	// after the loop - we modify the double value "_cycles" to take into account the adjustment to the oscilator
+	// after the loop - the double value "_cycles" is modified to take into account the adjustment to the oscilator
 	// thus - within the loop we get the fast floating point math (with small erorrs)
 	// but outside the loop we keep acurate representation of the oscilator phase with double precision values to
 	// avoid the systemic errors
