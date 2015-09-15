@@ -7,6 +7,7 @@ rh.dsp.pc
 autom4te.cache/
 acinclude.m4
 aclocal.m4
+compile
 config.*
 configure
 depcomp
