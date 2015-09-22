@@ -2,9 +2,11 @@ rh.dsp.pc
 *.la
 *.lo
 *.o
+.dirstamp
 .deps/
 .libs/
 autom4te.cache/
+m4/
 acinclude.m4
 aclocal.m4
 compile
