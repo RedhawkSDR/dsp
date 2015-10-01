@@ -1,16 +1,12 @@
-# REDHAWK Basic Components rh.dsp
+# REDHAWK Basic Components rh.dsp shared library
  
 ## Description
 
 Contains the source and build script for the REDHAWK Basic Components rh.dsp shared library
  
-## REDHAWK Documentation
+## Installation Instructions
 
-REDHAWK Website: [www.redhawkSDR.org](http://www.redhawksdr.org)
-
-Overview and Getting Started Guide: [PDF](http://sourceforge.net/projects/redhawksdr/files/redhawk-doc/1.10/REDHAWK_Overview_v1.10.pdf/download "PDF") [HTML](http://redhawksdr.github.com/Documentation/gettingstarted/main.html "HTML")
-
-Full REDHAWK Manual: [PDF](http://sourceforge.net/projects/redhawksdr/files/redhawk-doc/1.10/REDHAWK_Manual_v1.10.pdf/download "PDF") [HTML](http://redhawksdr.github.com/Documentation/main.html "HTML")
+To build from source, run the `build.sh` script found at the top level directory. To install to $SDRROOT run, `build.sh install`.
  
 ## Copyrights
 
