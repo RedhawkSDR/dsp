@@ -28,7 +28,7 @@
 
 Name:           rh.dsp
 Version:        2.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        REDHAWK shared library %{name}
 
 Group:          REDHAWK/Shared Libraries
@@ -98,4 +98,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libdsp.so
 %{_libdir}/pkgconfig
 %{_prefix}/include
+
+%changelog
+* Wed Jun 21 2017 Ryan Bauman <rbauman@lgsinnovations.com> - 2.0.0-2
+- Mass rebuild for REDHAWK 2.1.1
 
