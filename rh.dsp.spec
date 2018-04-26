@@ -28,7 +28,7 @@
 
 Name:           rh.dsp
 Version:        2.0.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        REDHAWK shared library %{name}
 
 Group:          REDHAWK/Shared Libraries
